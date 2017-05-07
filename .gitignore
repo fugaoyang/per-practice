@@ -6,8 +6,8 @@ settings/
 .svn
 .class
 .classpath
-.project
-.settings
+#.project
+#.settings
 .iml
 *.iml
 
