@@ -1,6 +1,6 @@
 package com.test.deadLock;
 
-public class DeadLockTest {
+public class Synchronized_DeadLock_Test {
 
 	public static String A = "source-A";
 	public static String B = "source-B";
@@ -18,10 +18,10 @@ class Lock1 implements Runnable {
 		try {
 			System.out.println("----" + Thread.currentThread().getName() + "--start running");
 			while (true) {
-				synchronized (DeadLockTest.A) {
+				synchronized (Synchronized_DeadLock_Test.A) {
 					System.out.println("----" + Thread.currentThread().getName() + "--lock A");
 					Thread.sleep(2000);
-					synchronized (DeadLockTest.B) {
+					synchronized (Synchronized_DeadLock_Test.B) {
 						System.out.println("----" + Thread.currentThread().getName() + "--lock B");
 					}
 				}
@@ -35,10 +35,10 @@ class Lock2 implements Runnable {
 		try {
 			System.out.println("----" + Thread.currentThread().getName() + "--start running");
 			while (true) {
-				synchronized (DeadLockTest.B) {
+				synchronized (Synchronized_DeadLock_Test.B) {
 					System.out.println("----" + Thread.currentThread().getName() + "--lock B");
 					Thread.sleep(2000);
-					synchronized (DeadLockTest.A) {
+					synchronized (Synchronized_DeadLock_Test.A) {
 						System.out.println("----" + Thread.currentThread().getName() + "--lock A");
 					}
 				}}} catch (Exception e) {

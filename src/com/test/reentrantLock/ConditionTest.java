@@ -17,7 +17,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ConditionTest {
 	public static void main(String args[]){
 		final ConditionDemo demo = new ConditionDemo();
-		for(int i=0 ;i<5;i++){
+		for(int i=0 ;i<2;i++){
 			new Thread(new Runnable(){
 
 				@Override
@@ -29,7 +29,7 @@ public class ConditionTest {
 			}).start();
 		}
 		
-		for(int i=0 ;i<5;i++){
+		for(int i=0 ;i<2;i++){
 			new Thread(new Runnable(){
 
 				@Override
@@ -61,6 +61,7 @@ public class ConditionTest {
 			try{
 				while(depot != null){
 					addCon.await();
+					System.out.println(Thread.currentThread().getName() + "--生产拿addCon--await" );
 				}
 				depot = (long) count ++;
 				System.out.println(Thread.currentThread().getName() + "--设置了--" +depot);
@@ -80,6 +81,7 @@ public class ConditionTest {
 			try {
 				while(depot == null){
 					removeCon.await();
+					System.out.println(Thread.currentThread().getName() + "--消费removeCon --await" );
 				}
 				System.out.println(Thread.currentThread().getName() + "--取出了--" +depot);
 				depot = null;
